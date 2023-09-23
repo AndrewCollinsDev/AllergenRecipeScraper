@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Page</title>
+</head>
+<body>
+    <h1>Enter Search Terms</h1>
+    <form action="/prototype_results" method="post">
+        <input type="text" name="search_terms" placeholder="Enter search terms">
+        <div class="allergen" id="allergen-checkboxes">
+            <input type="checkbox" id="cereals_containing_gluten" name="allergen" value="cereals_containing_gluten">
+            <label for="cereals_containing_gluten"> Exclude Cereals containing gluten</label><br>
+            
+            <input type="checkbox" id="crustaceans" name="allergen" value="crustaceans">
+            <label for="crustaceans"> Exclude Crustaceans</label><br>
+            
+            <input type="checkbox" id="eggs" name="allergen" value="eggs">
+            <label for="eggs"> Exclude Eggs</label><br>
+            
+            <input type="checkbox" id="fish" name="allergen" value="fish">
+            <label for="fish"> Exclude Fish</label><br>
+            
+            <input type="checkbox" id="peanuts" name="allergen" value="peanuts">
+            <label for="peanuts"> Exclude Peanuts</label><br>
+            
+            <input type="checkbox" id="soybeans" name="allergen" value="soybeans">
+            <label for="soybeans"> Exclude Soybeans</label><br>
+            
+            <input type="checkbox" id="milk" name="allergen" value="milk">
+            <label for="milk"> Exclude Milk</label><br>
+            
+            <input type="checkbox" id="nuts" name="allergen" value="nuts">
+            <label for="nuts"> Exclude Nuts</label><br>
+            
+            <input type="checkbox" id="celery" name="allergen" value="celery">
+            <label for="celery"> Exclude Celery</label><br>
+            
+            <input type="checkbox" id="mustard" name="allergen" value="mustard">
+            <label for="mustard"> Exclude Mustard</label><br>
+            
+            <input type="checkbox" id="sesame" name="allergen" value="sesame">
+            <label for="sesame"> Exclude Sesame</label><br>
+            
+            <input type="checkbox" id="sulphur_dioxide_sulphites" name="allergen" value="sulphur_dioxide_sulphites">
+            <label for="sulphur_dioxide_sulphites"> Exclude Sulphur dioxide and sulphites</label><br>
+            
+            <input type="checkbox" id="lupin" name="allergen" value="lupin">
+            <label for="lupin"> Exclude Lupin</label><br>
+            
+            <input type="checkbox" id="molluscs" name="allergen" value="molluscs">
+            <label for="molluscs"> Exclude Molluscs</label><br>
+        </div>
+        <input type="submit" value="Search">
+    </form>
+</body>
+</html>

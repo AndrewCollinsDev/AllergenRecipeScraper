@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/app.result.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <style>
+        .bg-image_1 {
+            background-image: url("{{ url_for('static', filename='images/KK+Fine+Food+Shoot1194.jpg') }}");
+            background-size: cover;
+        }
+
+        .bg-image_2 {
+            background-image: url("{{ url_for('static', filename='images/233667412.jpg') }}");
+            background-size: cover;
+        }
+
+        .bg-image_3 {
+            background-image: url("{{ url_for('static', filename='images/plate-with-tableware-vegetables_23-2147694056.jpg') }}");
+            background-size: cover;
+        }
+
+        .bg-image_4 {
+            background-image: url("{{ url_for('static', filename='images/Background-app.jpg') }}");
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body class="font nice-grey">
+    <div id="app-background" class="bg-image_1 -z-10 absolute h-screen w-screen"></div>
+    <div class="flex items-center justify-center h-screen">
+        <div class="flex flex-col items-center h-500px w-450px w-full-mobile w-600px h-800px w-screen">
+            <div id="app-interface" class="h-500px w-450px w-600px h-800px w-full-mobile nice-grey mx-auto pt-1 p-5 rounded-md overflow-scroll h-600px">
+                {%for recipe in recipes %}
+                    <div class="h-20-percent width-full bg-gray-400 rounded-md p-1 overflow-hidden my-4 result">
+                        <i class="fas fa-plus-circle text-2xl text-white change"></i>
+                        <h3">{{ recipe.title }}</h3><br>
+                        
+                        
+                        <ul>
+                            {% for ingredient in recipe.ingredients %}
+                                <li>{{ ingredient }}</li>
+                            {% endfor %}
+                        </ul>
+                        <a href="{{recipe.link}}" class="text-blue-500">Link</a>
+                    </div>
+                {% endfor %}
+
+               
+               
+               
+            </div>
+            
+            <a href="{{ url_for('search') }}"><div id="searchButtonContainer" class="mt-4 flex justify-center">
+                <button id="myButton" class="w-450px w-full-mobile w-600px h-16 md:text-3xl text-2xl bg-gray-400 text-black hover:text-black hover:bg-white rounded-md">Search Again?</button> 
+            </div>
+            </a>
+        </div>
+    </div>
+</body>
+
+<script>
+$(document).ready(function() {
+    $(".change").click(function() {
+        const result = $(this).closest(".result"); // get the closest parent with the class "result"
+
+        if (result.hasClass('overflow-hidden')) {
+            result.removeClass('overflow-hidden');
+            result.addClass('h-fit');
+            $(this).removeClass('fa-plus-circle');
+            $(this).addClass('fa-minus-circle');
+        } else {
+            result.removeClass('h-fit');
+            result.addClass('overflow-hidden');
+            $(this).removeClass('fa-minus-circle');
+            $(this).addClass('fa-plus-circle');
+        }
+    });
+});
+$(document).ready(function(){
+    let i = 0;
+    const background = $('#app-background');
+    const backgroundArray = ['bg-image_1', 'bg-image_2', 'bg-image_3', 'bg-image_4','bg-image_1'];
+    
+    let intervalId;  // Declare a variable to store the interval ID
+
+    function change_background(){
+        background.stop(true, true).fadeOut(600, function() { // Added stop() to stop ongoing animations
+            background.removeClass(backgroundArray[i]);
+            background.addClass(backgroundArray[i+1]);
+            
+            if(i === 3){
+                i = 0;
+            }
+            else {
+                i = i + 1;
+            }
+
+        }).fadeIn(600);
+    }
+
+    intervalId = setInterval(change_background, 4000);  // Store the interval ID
+
+    $('#animated-placeholder').click(function() {
+      clearInterval(intervalId);  // Clear the interval
+      background.stop(true, true);  // Stop ongoing fadeIn or fadeOut on the background
+    });
+});
+
+
+
+
+
+</script>
+</html>

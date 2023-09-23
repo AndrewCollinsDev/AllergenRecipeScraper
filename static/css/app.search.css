@@ -1,0 +1,169 @@
+
+.bg-image_1 {
+    background-image: url("../images/KK+Fine+Food+Shoot1194.jpg");
+    background-size: cover;
+}
+
+.bg-image_2 {
+    background-image: url("../images/233667412.jpg");
+    background-size: cover;
+}
+
+.bg-image_3 {
+    background-image: url("../images/plate-with-tableware-vegetables_23-2147694056.jpg");
+    background-size: cover;
+}
+
+.bg-image_4 {
+    background-image: url("../images/Background-app.jpg");
+    background-size: cover;
+}
+
+
+
+.nice-grey{
+    background-color:#383639;
+}
+
+.nice-grey-light{
+    background-color:#9B969C;
+}
+
+.nice-grey-text{
+    color:#383639;
+}
+
+.nice-grey-light-text{
+    background-color:#9B969C;
+}
+
+.font{
+    font-family: 'Space Mono', monospace;
+}
+
+::placeholder {
+    color:#6a6a6a !important;
+  opacity: 1 !important; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color:#6a6a6a !important;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    color:#6a6a6a !important;
+}
+.allergen-item {
+    margin:10px;
+
+    
+}
+.allergen-item label {
+    /* Set initial styles */
+    background-color: transparent;
+    color: #FFFFFF; /* Or any other initial color */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Optional */
+}
+
+.allergen-item input[type="checkbox"]:checked + label {
+    /* Highlight styles when checked */
+    background-color: #FFFFFF; /* Or any highlight color */
+    color: #000000; /* Text color when highlighted */
+}
+input[type="checkbox"] {
+    opacity: 0;
+    display:none;
+  }
+  label {
+    padding: 10px 10px;  /* Increase padding for larger touch area */
+    border-radius: 12px;  /* Rounder corners */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-color:white;
+    border-width:2px;
+    
+
+  }
+  
+  label.selected {
+    background-color: #007bff;
+    color: white;
+    border: 2px solid #007bff;
+  }
+i:hover{
+    color: black;
+
+}
+
+
+@media (max-width: 540px) {
+.h-screen-mobile{
+    height:100vh;
+}
+.h-600px-mobile{
+    height:600px;
+}
+.w-screen-mobile{
+    height:100vw;
+}
+.min-height-1000px-mobile{
+    height:1000px;
+
+}
+.mobile-2-5-text {
+    font-size:1rem; /* 24px */
+    line-height: 2rem; /* 32px */
+}
+.mobile-2-text {
+    font-size: 1.5rem; /* 24px */
+    line-height: 2rem; /* 32px */
+}
+.pdt{
+    padding-top:5px;
+}
+}
+
+
+@media (min-width: 540px) {
+    /* Your styles for iPad and larger devices go here */
+    .h-1000px {
+        height:1000px;
+    }
+    
+    .h-800px {
+        height:800px;
+    }
+    .h-700px {
+        height:700px;
+    }
+    .h-650px {
+        height:650px;
+    }
+    .h-600px {
+        height:600px;
+    }
+    .w-800px {
+        width:800px;
+    }
+    .w-700px {
+        width:700px;
+    }
+    .w-600px {
+        width:600px;
+    }
+    
+    .h-400px {
+        height:400px;
+    }
+    
+    .w-450px {
+        width:450px;
+    }
+    .w-1000px {
+        width:1000px;
+    }
+    .wide-text-3xl{
+        font-size: 1.875rem; /* 30px */
+        line-height: 2.25rem; /* 36px */
+    }
+  }

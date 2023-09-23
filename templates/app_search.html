@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/app.search.css') }}">
+    <style>
+        .bg-image_1 {
+            background-image: url("{{ url_for('static', filename='images/KK+Fine+Food+Shoot1194.jpg') }}");
+            background-size: cover;
+        }
+
+        .bg-image_2 {
+            background-image: url("{{ url_for('static', filename='images/233667412.jpg') }}");
+            background-size: cover;
+        }
+
+        .bg-image_3 {
+            background-image: url("{{ url_for('static', filename='images/plate-with-tableware-vegetables_23-2147694056.jpg') }}");
+            background-size: cover;
+        }
+
+        .bg-image_4 {
+            background-image: url("{{ url_for('static', filename='images/Background-app.jpg') }}");
+            background-size: cover;
+        }
+    </style>
+
+</head>
+
+<body class="font nice-grey">
+<div id="loading_screen" class="absolute z-100 bg-gray-400 w-screen h-screen hidden flex justify-center items-center"><img src="{{ url_for('static', filename='images/loading.gif') }}"></div>
+<div class="z-50 absolute h-screen w-screen flex items-center justify-center hidden" id="pop-up">
+    
+
+    <form id="searchbox-form" action="/app_result" method="post" class="w-800px min-height-1000px-mobile h-650px nice-grey p-4 mx-auto md:mt-10 rounded-md">
+        <div class="nice-grey-light p-4 mb-4">
+        <p class=" text-4xl text-black">Click an allergen to eliminate it from search results!</p>
+    </div>
+        <div class="min-height-1000px-mobile w-800px w-screen-mobile md:text-3xl mobile-2-5-text text-lg grid md:grid-cols-2 grid-cols-1 gap-1" id="allergen-checkboxes">
+            
+            <div class="allergen-item">
+                <input type="checkbox" id="cereals_containing_gluten" name="allergen" value="cereals_containing_gluten">
+                <label for="cereals_containing_gluten"> Exclude gluten</label>
+            </div>
+            <div class="allergen-item">
+                <input type="checkbox" id="crustaceans" name="allergen" value="crustaceans">
+                <label for="crustaceans"> Exclude Crustaceans</label>
+            </div>
+            <div class="allergen-item">
+                <input type="checkbox" id="eggs" name="allergen" value="eggs">
+                <label for="eggs"> Exclude Eggs</label>
+            </div>
+            <div class="allergen-item">
+                <input type="checkbox" id="fish" name="allergen" value="fish">
+                <label for="fish"> Exclude Fish</label>
+            </div>
+            <div class="allergen-item">
+                <input type="checkbox" id="peanuts" name="allergen" value="peanuts">
+                <label for="peanuts"> Exclude Peanuts</label>
+            </div>
+            <div class="allergen-item">
+                <input type="checkbox" id="soybeans" name="allergen" value="soybeans">
+                <label for="soybeans"> Exclude Soybeans</label>
+            </div>
+            <div class="allergen-item">
+                <input type="checkbox" id="milk" name="allergen" value="milk">
+                <label for="milk"> Exclude Milk</label>
+            </div>
+            <div class="allergen-item">
+                <input type="checkbox" id="nuts" name="allergen" value="nuts">
+                <label for="nuts"> Exclude Nuts</label>
+            </div>
+            <div class="allergen-item">
+                <input type="checkbox" id="celery" name="allergen" value="celery">
+                <label for="celery"> Exclude Celery</label>
+            </div>
+            <div class="allergen-item">
+                <input type="checkbox" id="mustard" name="allergen" value="mustard">
+                <label for="mustard"> Exclude Mustard</label>
+            </div>
+            <div class="allergen-item">
+                <input type="checkbox" id="sesame" name="allergen" value="sesame">
+                <label for="sesame"> Exclude Sesame</label>
+            </div>
+            <div class="allergen-item">
+                <input type="checkbox" id="sulphur_dioxide_sulphites" name="allergen" value="sulphur_dioxide_sulphites">
+                <label for="sulphur_dioxide_sulphites"> Exclude SO₂</label><br>
+            </div>
+            <div class="allergen-item">
+                <input type="checkbox" id="lupin" name="allergen" value="lupin">
+                <label for="lupin"> Exclude Lupin</label><br>
+            </div>
+            <div class="allergen-item">
+                <input type="checkbox" id="molluscs" name="allergen" value="molluscs">
+                <label for="molluscs"> Exclude Molluscs</label><br>
+            </div>
+            
+        </div>
+        <div class="container flex justify-center"><i class="fas fa-times-circle text-6xl text-white" id="change"></i></div>
+        
+    
+    
+    
+</div>
+<div id="app-background" class="bg-image_1 -z-10 absolute h-screen w-screen"></div>
+<div class="flex items-center justify-center h-screen">
+    <div id="app-interface" class="h-600px w-450px nice-grey mx-auto p-5 rounded-md">
+        <div id="search" class="">
+            <div id="Descriptor" class="mb-5 mt-5 md:mt-0">
+                <div id="heading" class="mb-5 bg-gray-400 h-16 hover:bg-white mt-5 md:mt-0">
+
+                    <h1 class="text-center md:text-3xl pt-3 mobile-2-5-text pdt">Allergen Recipe Filter</h1>
+                </div>
+                <p class="px-4 text-white">This tool allows for the searching of recipes and then filters them for particular allergens.<br><br>Enter the recipe you want to find below, select the allergens you want to avoid and click search!</p>
+            </div>
+            <div id="search_box" class="mb-10">
+                <input class="w-full h-16 text-center text-2xl md:text-3xl bg-gray-400" name="search_terms" type="text" placeholder="" id="animated-placeholder" id="search_terms">
+            </div>
+            <div id="allergen-form-collapsable" class="mb-10 w-full h-16 nice-grey-light flex justify-center">
+                <button type="button" id="allergen_selector_button" class="w-full h-16 md:text-3xl text-2xl bg-gray-400 rounded-md hover:bg-white">Select Allergens</button>
+                
+            </div>
+                <div id="searchButtonContainer" class=" mb-10 flex justify-center">
+                    <button type="submit" id="myButton" class="w-full h-16 md:text-3xl text-2xl bg-gray-400 hover:bg-white">Search</button>
+                </div>
+            </form>
+
+            
+        </div>
+    </div>
+    </div>
+    </body>
+<script>
+    const placeholderArray = ['Cheesecake...?', 'Lasagne...?', 'Pizza...?', 'Tacos...?'];
+let placeholderIndex = 0;
+const inputElement = document.getElementById('animated-placeholder');
+
+function updatePlaceholder() {
+  let currentPlaceholder = placeholderArray[placeholderIndex];
+  let currentLength = 0;
+
+  // Clear existing placeholder
+  inputElement.placeholder = "";
+
+  // "Type" new placeholder
+  let interval = setInterval(() => {
+    if (currentLength <= currentPlaceholder.length) {
+      inputElement.placeholder = currentPlaceholder.substring(0, currentLength);
+      currentLength++;
+    } else {
+      clearInterval(interval);
+      placeholderIndex = (placeholderIndex + 1) % placeholderArray.length;
+
+      // Pause before starting to type next placeholder
+      setTimeout(updatePlaceholder, 1000);
+    }
+  }, 150);
+}
+
+updatePlaceholder();
+
+
+$(document).ready(function(){
+    let i = 0;
+    const background = $('#app-background');
+    const backgroundArray = ['bg-image_1', 'bg-image_2', 'bg-image_3', 'bg-image_4','bg-image_1'];
+    
+    let intervalId;  // Declare a variable to store the interval ID
+
+    function change_background(){
+        background.stop(true, true).fadeOut(600, function() { // Added stop() to stop ongoing animations
+            background.removeClass(backgroundArray[i]);
+            background.addClass(backgroundArray[i+1]);
+            
+            if(i === 3){
+                i = 0;
+            }
+            else {
+                i = i + 1;
+            }
+
+        }).fadeIn(600);
+    }
+
+    intervalId = setInterval(change_background, 4000);  // Store the interval ID
+
+    $('#animated-placeholder').click(function() {
+      clearInterval(intervalId);  // Clear the interval
+      background.stop(true, true);  // Stop ongoing fadeIn or fadeOut on the background
+    });
+});
+$(document).ready(function(){
+    const allergen = $('#allergen_selector_button');
+    const change = $('#change'); // Fixed this line. It was 'close' before.
+    const pop_up = $('#pop-up');
+  
+    allergen.click(function() {
+        pop_up.slideDown(100);
+    });
+  
+    change.click(function() { // Fixed this line. It was 'close' before.
+        pop_up.fadeToggle(100);
+    });
+});
+
+$(document).ready(function(){
+    const button = $('#myButton');
+    const loading_screen = $('#loading_screen'); 
+    button.click(function(){
+        loading_screen.css("display", "flex").show(); 
+    });
+});
+
+
+
+</script>
+</html>

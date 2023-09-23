@@ -1,0 +1,115 @@
+.h-500px {
+    height:500px;
+}
+
+
+.bg-image_1 {
+    background-image: url("../images/KK+Fine+Food+Shoot1194.jpg");
+    background-size: cover;
+}
+
+.bg-image_2 {
+    background-image: url("../images/233667412.jpg");
+    background-size: cover;
+}
+
+.bg-image_3 {
+    background-image: url("../images/plate-with-tableware-vegetables_23-2147694056.jpg");
+    background-size: cover;
+}
+
+.bg-image_4 {
+    background-image: url("../images/Background-app.jpg");
+    background-size: cover;
+}
+
+
+
+.nice-grey{
+    background-color:#383639;
+}
+
+.nice-grey-light{
+    background-color:#9B969C;
+}
+
+
+.nice-grey-text{
+    color:#383639;
+}
+
+.nice-grey-light-text{
+    color:#9B969C;
+}
+
+.font{
+    font-family: 'Space Mono', monospace;
+}
+
+::placeholder {
+    color:#6a6a6a !important;
+  opacity: 1 !important; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color:#6a6a6a !important;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    color:#6a6a6a !important;
+}
+.hidden_scroll { 
+    overflow: hidden;
+}
+#app-interface::-webkit-scrollbar {
+    display: none;  /* for Chrome, Safari, and newer versions of Opera */
+  }
+  
+  #app-interface {
+    -ms-overflow-style: none;  /* for Internet Explorer and Edge */
+    scrollbar-width: none;  /* for Firefox */
+    overflow-y: scroll;
+  }
+  
+
+
+.h-20-percent{
+    height:20%;
+}
+
+
+    .result_word_wrap {
+        word-wrap: break-word; /* Add this line */
+    }
+
+
+@media (max-width: 540px){
+    .h-600px{
+        height:600px;
+    }
+    .w-full-mobile{
+        width:100vw;
+    }
+
+}
+
+
+@media (min-width: 540px){
+    .w-600px {
+        width:600px;
+    }
+    .h-800px {
+        height:800px;
+    }
+
+}
+
+
+@media (min-width: 900px){
+    .w-450px {
+        width:450px;
+    }
+    .h-500px {
+        height:500px;
+    }
+}
